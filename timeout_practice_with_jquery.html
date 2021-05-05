@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Ajax - with Timeout</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
+    <body> 
+        <h3>Click the button to run the test.  
+            You need to use the developer tools and be in debug mode.</h3> 
+        <button id="run" type="button" class="pure-button pure-button-primary">Run</button>
+        <script>
+            window.addEventListener("DOMContentLoaded", event => {
+                document.querySelector("#run").addEventListener("click", event => {
+                    $.ajax({ 
+                        url: "https://zumatra.com/teach/never_return.php",
+                        timeout: 2000
+                    }).done(() => {
+                        console.log("Completed");
+                    }).fail(() => {
+                        console.error("Timeout!");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html> 
